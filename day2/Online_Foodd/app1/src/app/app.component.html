@@ -1,0 +1,25 @@
+<nav class="navbar navbar-inverse">
+  <div class="container">
+      <div class="navbar-header">
+        <a class="navbar-brand" href="#">MyApp</a>
+      </div>
+
+      <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+        <ul class="nav navbar-nav">
+          <li><a routerLink="/movie-list">Movies</a></li>
+          <li><a routerLink="/movie-add">Add Movie</a></li>
+          <li><a routerLink="/contact-us">Contact Us</a></li>
+          <li><a routerLink="/help">Help</a></li>
+        </ul>
+        <ul class="nav navbar-nav navbar-right">
+          <li><button (click)="onLogout()" style="margin-top: 10px;" class="btn btn-link">Logout</button></li>
+        </ul>
+      </div>
+  </div>
+</nav>
+
+<div class="container">
+  <!-- <app-add-movie></app-add-movie> -->
+  <!-- <app-movie-list></app-movie-list> -->
+  <router-outlet></router-outlet>
+</div>

@@ -18,7 +18,7 @@
 	<table style="background-color: pink; margin: auto;" border="2">
 
 
-		<c:forEach var="p" items="${requestScope.product_list}">
+		<%-- <c:forEach var="p" items="${requestScope.product_list}">
 			<tr>
 				<td>${p.name}</td>
 				<td>${p.description}</td>
@@ -32,11 +32,11 @@
 		
 				
 			</tr>
-		</c:forEach>
+		</c:forEach> --%>
 	</table>
-	<form:form action="/customer/addcart" modelAttribute="products">
-		<form:checkboxes items="${requestScope.product_list}" itemLabel="name" path="item" delimiter="<br>"/>
-		<br/><br/>
+	<form:form action="/Online_Foodd/customer/addcart" method="GET"  modelAttribute="products" >
+	 <form:checkboxes items="${requestScope.product_list}" itemLabel="name" path="item" delimiter="<br>"/>
+		<br/><br/> 
 		<input type="submit" value="Add To Cart"/>
 	</form:form>
 </body>

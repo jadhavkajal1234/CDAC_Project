@@ -147,9 +147,12 @@ public class CustomerController {
 					return null;
 				}*/
 				
-				@RequestMapping("/addcart")
-				public String addToCart(Model products , HttpSession session){
-					System.out.println("#########  "+products);
+				@GetMapping("/addcart")
+				public String addToCart(@ModelAttribute("products") ShoppingCart products , HttpSession session){
+					System.out.println("#########  " + products.getItem());
+					for (String string : products.getItem()) {
+						System.out.println("########################## "+string );
+					}
 					return null;
 				}
 	

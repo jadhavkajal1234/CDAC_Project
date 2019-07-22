@@ -1,9 +1,8 @@
 package com.app.controller;
 
+import java.util.ArrayList;
 import java.util.List;
 
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 
@@ -11,16 +10,16 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.app.pojos.Customer;
-import com.app.pojos.Order1;
+import com.app.pojos.Product;
+import com.app.pojos.ShoppingCart;
 import com.app.service.ICustomerService;
 
 //@CrossOrigin(origins="http://localhost:4200",allowedHeaders="*")
@@ -73,7 +72,7 @@ public class CustomerController {
 		// request handling method to process login form
 		@PostMapping("/login")
 		public String processLoginForm(@RequestParam String email, @RequestParam(name = "password") String pass,
-				Model map,RedirectAttributes flashMap,HttpSession hs) {
+				Model map,RedirectAttributes flashMap,HttpSession session) {
 			System.out.println("in process login form " + email + " " + pass+" "+map);
 			// invoke service layer method for validation
 			try {
@@ -83,7 +82,8 @@ public class CustomerController {
 				//add status in flash map to be remembered till next request
 				flashMap.addFlashAttribute("status", "Successful Login , ");
 				//store user dtls under session scope
-				hs.setAttribute("cust_dtls",c);
+				session.setAttribute("cust_dtls",c);
+				session.setAttribute("cart", new ArrayList<Product>());
 
 				return "redirect:/customer/restro_list";
 			} catch (RuntimeException e) {
@@ -125,7 +125,7 @@ public class CustomerController {
 				@GetMapping("/product_list")
 				public String listProduct(Model map)
 				{
-					
+					map.addAttribute("products", new ShoppingCart());
 					System.out.println("in list Product "+map);
 					map.addAttribute("product_list", service.listProduct());
 					return "customer/product_list";
@@ -141,6 +141,16 @@ public class CustomerController {
 						return "customer/orderplaces";
 				}
 				
-			
+			/*	@GetMapping("/addcart")
+				public String addToCart(@ModelAttribute("products") ShoppingCart products , HttpSession session){
+					System.out.println("#########  "+products.getItem());
+					return null;
+				}*/
+				
+				@RequestMapping("/addcart")
+				public String addToCart(Model products , HttpSession session){
+					System.out.println("#########  "+products);
+					return null;
+				}
 	
 }

@@ -23,8 +23,8 @@ public class CustomerDaoImpl implements ICustomerDao {
 	@Override
 	public Customer validateCustomer(String email, String pass) {
 		String jpql = "select c from Customer c  where c.email=:em and c.password=:pa";
-		return sf.getCurrentSession().createQuery(jpql, Customer.class).setParameter("em", email).setParameter("pa", pass)
-				.getSingleResult();
+		return (Customer) sf.getCurrentSession().createQuery(jpql).setParameter("em", email).setParameter("pa", pass)
+				.uniqueResult();
 	}
 
 
@@ -51,20 +51,20 @@ public class CustomerDaoImpl implements ICustomerDao {
 
 	@Override
 	public Customer getCustomerDetails(int id) {
-		return sf.getCurrentSession().get(Customer.class, id);
+		return (Customer) sf.getCurrentSession().get(Customer.class, id);
 	}
 	@Override
 	public Product getProductDetails(int id) {
-		return sf.getCurrentSession().get(Product.class, id);
+		return (Product) sf.getCurrentSession().get(Product.class, id);
 	}
 	@Override
 	public Restaurant getRestaurantDetails(int id) {
-		return sf.getCurrentSession().get(Restaurant.class, id);
+		return (Restaurant) sf.getCurrentSession().get(Restaurant.class, id);
 	}
 
 	@Override
 	public Order1 getOrderDetails(int id) {
-		return sf.getCurrentSession().get(Order1.class, id);
+		return (Order1) sf.getCurrentSession().get(Order1.class, id);
 		
 	}
 
@@ -72,21 +72,21 @@ public class CustomerDaoImpl implements ICustomerDao {
 	public List<Order1> listOrder() {
 		String jpql="select o from Order1 o";
 		
-		return sf.getCurrentSession().createQuery(jpql, Order1.class).getResultList();
+		return  sf.getCurrentSession().createQuery(jpql).list();
 	}
 
 	@Override
 	public List<Product> listProduct() {
        String jpql="select p from Product p";
 		
-		return sf.getCurrentSession().createQuery(jpql, Product.class).getResultList();
+		return sf.getCurrentSession().createQuery(jpql).list();
 	}
 
 	@Override
 	public List<Restaurant> listRestaurant() {
 		 String jpql="select r from Restaurant r";
 			
-			return sf.getCurrentSession().createQuery(jpql,Restaurant.class).getResultList();
+			return sf.getCurrentSession().createQuery(jpql).list();
 	}
 
 
@@ -95,7 +95,7 @@ public class CustomerDaoImpl implements ICustomerDao {
 		
 		String jpql = "select p from Product p where p.productId in (:ids)";
 		
-		return sf.getCurrentSession().createQuery(jpql, Product.class).getResultList();
+		return sf.getCurrentSession().createQuery(jpql).list();
 				
 	}
 

@@ -1,4 +1,4 @@
-package com.app.pojos;
+package com.app.dao.model;
 
 import java.util.Date;
 
@@ -13,18 +13,13 @@ import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
 
 import org.springframework.format.annotation.DateTimeFormat;
-@Entity
-@Table(name="Order1")
+
 public class Order1 {
 	private Integer  id;
 	private Customer customerId;
 	
-	@NotEmpty(message=" Quantity_item must be suplied")
 	private String quantityItem;
-	@NotEmpty(message=" Quantity_order must be suplied")
 	private String quantityOrder;
-	@NotNull
-	@DateTimeFormat(pattern="yyyy-MM-dd")
 	private Date orderDate;
 	private String deliveryStatus;
 	private Restaurant restaurantId ;

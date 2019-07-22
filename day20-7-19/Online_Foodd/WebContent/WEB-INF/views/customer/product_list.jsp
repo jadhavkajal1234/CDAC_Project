@@ -4,6 +4,7 @@
 <%@ taglib uri="http://www.springframework.org/tags" prefix="spring"%>
 <%-- import JSTL supplied formatting tag lib --%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 
 <!DOCTYPE html>
 <html>
@@ -33,6 +34,10 @@
 			</tr>
 		</c:forEach>
 	</table>
-	
+	<form:form action="/customer/addcart" modelAttribute="products">
+		<form:checkboxes items="${requestScope.product_list}" itemLabel="name" path="item" delimiter="<br>"/>
+		<br/><br/>
+		<input type="submit" value="Add To Cart"/>
+	</form:form>
 </body>
 </html>

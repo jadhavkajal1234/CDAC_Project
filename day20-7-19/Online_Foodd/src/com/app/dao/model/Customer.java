@@ -1,4 +1,4 @@
-package com.app.pojos;
+package com.app.dao.model;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -13,22 +13,14 @@ import javax.persistence.Table;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.Pattern;
 
-@Entity
-@Table(name="Customer")
 public class Customer {
 	private Integer id;
-	@NotEmpty(message="Name must be suplied")
 	private String name;
-	@NotEmpty(message="Email must be suplied")
 	private String email;
-	@Pattern(regexp="((?=.*\\d)(?=.*[a-z])(?=.*[#@$*]).{5,20})",message="Blank or invalid pwd")
 	private String password;
-	@NotEmpty
 	private String phonenumber;
-	@NotEmpty(message="Address must be suplied")
 	private  String address;
-	
-		private List<Order1> orders= new ArrayList<>();
+    private List<Order1> orders= new ArrayList<>();
 	
 	
 	public Customer() {
@@ -83,7 +75,6 @@ public class Customer {
 		this.address = address;
 	}
 	
-	@OneToMany(mappedBy="customerId",cascade=CascadeType.ALL)
 	public List<Order1> getOrders() {
 		return orders;
 	}

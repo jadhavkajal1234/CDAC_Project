@@ -25,7 +25,8 @@
 		<property name="hibernateProperties">
 			<value>
 			 hibernate.show_sql=true
-			 hibernate.hbm2ddl.auto=update
+			 hibernate.dialect=org.hibernate.dialect.PostgreSQL9Dialect
+			 hibernate.hbm2ddl.auto=create
 			</value>
 		</property>
 	</bean>

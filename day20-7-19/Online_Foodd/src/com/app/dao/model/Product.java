@@ -1,4 +1,4 @@
-package com.app.pojos;
+package com.app.dao.model;
 
 import java.util.Arrays;
 
@@ -13,19 +13,24 @@ import javax.persistence.Table;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
 
-@Entity
-@Table(name="Product")
 public class Product {
 	private Integer id;
-	@NotEmpty(message="Name must be suplied")
 	private String name;
-	@NotEmpty(message=" Description must be suplied")
 	private String description;
-	@NotNull
 	private Double price;
 	private Byte[] imageFile;
 	private Restaurant restaurantId ;
 	private String Type;
+	private String[] items;
+	
+	public void setProducts(String[] products) {
+		this.items = products;
+	}
+	
+	public String[] getProducts() {
+		return items;
+	}
+	
 	public Product() {
 		
 	}

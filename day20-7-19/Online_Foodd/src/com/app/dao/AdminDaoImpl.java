@@ -24,7 +24,7 @@ public class AdminDaoImpl implements IAdminDao {
 	public List<Customer> listCustomer() {
     String jpql="select c from Customer c ";
 		
-	return sf.getCurrentSession().createQuery(jpql, Customer.class).getResultList();
+	return sf.getCurrentSession().createQuery(jpql).list();
 	}
 
 	
@@ -55,7 +55,7 @@ public class AdminDaoImpl implements IAdminDao {
 	public String deleteCustomer(int id) {
 		String jpql ="select c from Customer c where c.id=:id";
 		Session hs=sf.getCurrentSession();
-		Customer e=sf.getCurrentSession().createQuery(jpql, Customer.class).setParameter("id", id).getSingleResult();
+		Customer e=(Customer) sf.getCurrentSession().createQuery(jpql).setParameter("id", id).uniqueResult();
 		hs.delete(e);
 		return "Customer deleted with ID="+e.getId();
 	}
@@ -70,7 +70,7 @@ public class AdminDaoImpl implements IAdminDao {
 	public String deleteProduct(int id) {
 		String jpql ="select p from Product p where p.id=:id";
 		Session hs=sf.getCurrentSession();
-		Product p=sf.getCurrentSession().createQuery(jpql, Product.class).setParameter("id", id).getSingleResult();
+		Product p=(Product) sf.getCurrentSession().createQuery(jpql).setParameter("id", id).uniqueResult();
 		hs.delete(p);
 		return "Product deleted with ID="+p.getId();
 	}
@@ -92,7 +92,7 @@ public class AdminDaoImpl implements IAdminDao {
 	public String deleteRestaurant(int id) {
 		String jpql ="select r from Restaurantr where r.id=:id";
 		Session hs=sf.getCurrentSession();
-		Restaurant r=sf.getCurrentSession().createQuery(jpql, Restaurant.class).setParameter("id", id).getSingleResult();
+		Restaurant r= (Restaurant) sf.getCurrentSession().createQuery(jpql).setParameter("id", id).uniqueResult();
 		hs.delete(r);
 		return "Restaurant deleted with ID="+r.getRestaurantId();
 	}

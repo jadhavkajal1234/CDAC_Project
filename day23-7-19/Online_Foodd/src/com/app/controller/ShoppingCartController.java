@@ -26,7 +26,7 @@ public class ShoppingCartController {
 public String addnow(@PathVariable(value="id") int id,HttpSession session) {
 	if(session.getAttribute("cart")==null) {
 		List<Item> cart=new ArrayList<Item>();
-		cart.add(new Item (service.getItemDetails(id));
+		cart.add(service.getItemDetails(id));
 		session.setAttribute("cart", cart);
 	}
 	else
@@ -34,7 +34,7 @@ public String addnow(@PathVariable(value="id") int id,HttpSession session) {
 		List<Item> cart =(List<Item> )session.getAttribute("cart");
 		int index =isExisting(id,session);
 		if(index==-1)
-		cart.add(new Item (service.getItemDetails(id);
+			cart.add (service.getItemDetails(id));
 		else {
 			int quantity=cart.get(index).getQuantity() 	+1;
 			cart.get(index).setQuantity(quantity);

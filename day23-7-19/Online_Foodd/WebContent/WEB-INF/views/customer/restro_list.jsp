@@ -24,7 +24,7 @@
 				
 				<td>${r.address}</td>
 			
-				<td><a href="<spring:url value='/customer/product_list?rid=${r.id}'/>">add product</a></td>
+				<td><a href="<spring:url value='/customer/product_list?rid=${r.name}'/>">add product</a></td>
 
 			<%-- 	<td><a href="<spring:url value='/customer/product_list?cid=${r.id}'/>">add product</a></td> --%>
 				

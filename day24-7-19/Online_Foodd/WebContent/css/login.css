@@ -1,0 +1,42 @@
+body{
+  background-color:#1A1A1D;
+  background-repeat:no-repeat;
+  background-size:cover;	
+}
+.mywrapper{
+align-items:center;
+justify-content:center;
+margin-top: 10%;
+margin-bottom: 10%;
+margin-left: 20%;
+margin-right: 20%;
+}
+.box{
+  color:white;
+}
+
+h1{
+  font-size:50px;
+  margin-bottom:20px;
+  padding-bottom:7px;
+  border-bottom:5px solid #07eaad;
+  text-align: center;
+}
+.table-class{
+	content: center;
+}
+.textbox td{
+
+  width:100%;
+  font-size:20px;
+  padding:5px 0;
+  border-bottom: 1px solid #07eaad;
+}
+.textbox td input{
+	padding:10px;
+}
+
+.table-class .textbox td a{
+	text-decoration: none;
+}
+

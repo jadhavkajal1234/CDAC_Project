@@ -1,0 +1,135 @@
+body{
+
+  background-image:
+    linear-gradient(
+      rgba(0, 0, 0, 0.5),
+      rgba(0, 0, 0, 0.5)
+    ),url("aa.jpg");
+    background-repeat: no-repeat;
+background-size:cover;
+padding: 0;
+height:100%;
+	width:100%;
+	margin: 0px;
+	padding: 0px;
+}
+
+body .navbar {
+  overflow: auto;
+  background-color: #1AAB8A;
+  font-family: Arial;
+  padding:20px;
+  margin-top: 0px;
+}
+
+.navbar .nav-item{
+	float:right;
+}
+.navbar a{
+	text-align: center;
+  padding: 12px;
+  color: white;
+  text-decoration: none;
+  font-size: 17px;
+  margin:20px;
+}
+.navbar a:hover {
+  color: #000;
+}
+
+.bb{
+  text-align:center;
+  margin-top: 50px;
+}
+.bb a{
+  background:#1AAB8A;
+  color:#fff;
+  border:none;
+  position:relative;
+  height:60px;
+  font-size:1.3em;
+
+  padding:10px 15px;
+  cursor:pointer;
+  transition:800ms ease all;
+  outline:none;
+  margin:20px;
+  text-decoration: none;
+}
+.bb a:hover{
+  background:#fff;
+  color:#1AAB8A;
+}
+.bb a:before,a:after{
+  content:'';
+  position:absolute;
+  top:0;
+  right:0;
+  height:2px;
+  width:0;
+  background: #1AAB8A;
+  transition:400ms ease all;
+}
+.bb a:after{
+  right:inherit;
+  top:inherit;
+  left:0;
+  bottom:0;
+}
+.bb a:hover:before,.bb a:hover:after{
+  width:100%;
+  transition:800ms ease all;
+}
+
+h1{
+color:white;
+text-align:center;
+font-size:7.5vw;
+font-family: 'Bungee Inline', cursive;
+}
+h2{
+  color:white;
+  text-align:center;
+  font-size: 3.5vw;
+
+  font-family: 'Bowlby One SC', cursive;
+  margin-top:4%;
+}
+
+ li{
+  padding:1px 10px;
+  color:white;
+}
+.pcs{
+
+  border:2px solid white;
+  padding:2px 5px;
+  color:red;
+}
+
+
+
+@media screen and (max-width:600px){
+  h1{
+
+    font-size: 3.7em;
+  }
+  h2{
+    margin-top:20px;
+    font-size: 1.5em;
+  }
+  .container{
+  margin-top:30px;
+	
+  }
+  .bb{
+
+    margin-top: 12px;
+  }
+  .bb a{
+    display:block;
+    margin:20px;
+    padding:10px;
+
+  }
+}
